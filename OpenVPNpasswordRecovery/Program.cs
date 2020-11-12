@@ -11,6 +11,9 @@ namespace OpenVPNpasswordRecovery
     {
         static void Main(string[] args)
         {
+            try
+            {
+                         
             RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"Software\OpenVPN-GUI\configs");
             foreach (string rkconf in rk.GetSubKeyNames())
             {
@@ -29,6 +32,12 @@ namespace OpenVPNpasswordRecovery
 
                 }
 
+            }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Huston, we've got problem! {0}", e.Message);
+                //throw;
             }
             Console.ReadKey();
 
